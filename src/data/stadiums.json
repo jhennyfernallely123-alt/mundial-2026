@@ -1,0 +1,110 @@
+﻿[
+    {
+        "nombre":  "N. York/N. Jersey",
+        "ciudad":  "Nueva York/Nueva Jersey",
+        "pais":  "USA",
+        "utc":  "UTC-4"
+    },
+    {
+        "nombre":  "Dallas",
+        "ciudad":  "Dallas",
+        "pais":  "USA",
+        "utc":  "UTC-5"
+    },
+    {
+        "nombre":  "Kansas City",
+        "ciudad":  "Kansas City",
+        "pais":  "USA",
+        "utc":  "UTC-5"
+    },
+    {
+        "nombre":  "Seattle",
+        "ciudad":  "Seattle",
+        "pais":  "USA",
+        "utc":  "UTC-7"
+    },
+    {
+        "nombre":  "Bahia de San Francisco",
+        "ciudad":  "San Francisco",
+        "pais":  "USA",
+        "utc":  "UTC-7"
+    },
+    {
+        "nombre":  "BC Place Vancouver",
+        "ciudad":  "Vancouver",
+        "pais":  "Canada",
+        "utc":  "UTC-7"
+    },
+    {
+        "nombre":  "Boston",
+        "ciudad":  "Boston",
+        "pais":  "USA",
+        "utc":  "UTC-4"
+    },
+    {
+        "nombre":  "Monterrey",
+        "ciudad":  "Monterrey",
+        "pais":  "Mexico",
+        "utc":  "UTC-6"
+    },
+    {
+        "nombre":  "Denver",
+        "ciudad":  "Denver",
+        "pais":  "USA",
+        "utc":  "UTC-6"
+    },
+    {
+        "nombre":  "Toronto",
+        "ciudad":  "Toronto",
+        "pais":  "Canada",
+        "utc":  "UTC-4"
+    },
+    {
+        "nombre":  "San Francisco",
+        "ciudad":  "San Francisco",
+        "pais":  "USA",
+        "utc":  "UTC-7"
+    },
+    {
+        "nombre":  "Miami",
+        "ciudad":  "Miami",
+        "pais":  "USA",
+        "utc":  "UTC-4"
+    },
+    {
+        "nombre":  "Los Angeles",
+        "ciudad":  "Los Angeles",
+        "pais":  "USA",
+        "utc":  "UTC-7"
+    },
+    {
+        "nombre":  "Atlanta",
+        "ciudad":  "Atlanta",
+        "pais":  "USA",
+        "utc":  "UTC-4"
+    },
+    {
+        "nombre":  "Houston",
+        "ciudad":  "Houston",
+        "pais":  "USA",
+        "utc":  "UTC-5"
+    },
+    {
+        "nombre":  "Filadelfia",
+        "ciudad":  "Filadelfia",
+        "pais":  "USA",
+        "utc":  "UTC-4"
+    },
+    {
+        "nombre":  "Ciudad de Mexico",
+        "ciudad":  "Ciudad de Mexico",
+        "pais":  "Mexico",
+        "utc":  "UTC-6"
+    },
+    {
+        "nombre":  "Guadalajara",
+        "ciudad":  "Guadalajara",
+        "pais":  "Mexico",
+        "utc":  "UTC-6"
+    }
+]

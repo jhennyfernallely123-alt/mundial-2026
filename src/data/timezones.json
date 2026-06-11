@@ -1,0 +1,126 @@
+﻿[
+    {
+        "pais":  "Argentina",
+        "utc":  "UTC-3"
+    },
+    {
+        "pais":  "Bolivia",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "Chile",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "Colombia",
+        "utc":  "UTC-5"
+    },
+    {
+        "pais":  "Costa Rica",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "Cuba",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "Ecuador",
+        "utc":  "UTC-5"
+    },
+    {
+        "pais":  "El Salvador",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "España (Islas Canarias)",
+        "utc":  "UTC+1"
+    },
+    {
+        "pais":  "España (Península y Baleares)",
+        "utc":  "UTC+2"
+    },
+    {
+        "pais":  "Guatemala",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "Guinea Ecuatorial",
+        "utc":  "UTC+1"
+    },
+    {
+        "pais":  "Honduras",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "México (Centro)",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "México (Quintana Roo)",
+        "utc":  "UTC-5"
+    },
+    {
+        "pais":  "México (Baja California)",
+        "utc":  "UTC-7"
+    },
+    {
+        "pais":  "Nicaragua",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "Panamá",
+        "utc":  "UTC-5"
+    },
+    {
+        "pais":  "Paraguay",
+        "utc":  "UTC-3"
+    },
+    {
+        "pais":  "Perú",
+        "utc":  "UTC-5"
+    },
+    {
+        "pais":  "Puerto Rico",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "República Dominicana",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "Uruguay",
+        "utc":  "UTC-3"
+    },
+    {
+        "pais":  "Venezuela",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "CDMX, Guadalajara y Monterrey ",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "Costa Este (Nueva York/NJ, Miami, Philadelphia, Atlanta, Boston)",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "Centro (Dallas, Houston, Kansas City)",
+        "utc":  "UTC-5"
+    },
+    {
+        "pais":  "Montaña (Denver)",
+        "utc":  "UTC-6"
+    },
+    {
+        "pais":  "Costa Oeste (Los Ángeles, San Francisco, Seattle)",
+        "utc":  "UTC-7"
+    },
+    {
+        "pais":  "Toronto",
+        "utc":  "UTC-4"
+    },
+    {
+        "pais":  "Vancouver",
+        "utc":  "UTC-7"
+    }
+]
