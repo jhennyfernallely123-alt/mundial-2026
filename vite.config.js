@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: '/mundial-2026/',
   server: {
     host: '127.0.0.1',
     port: 3000
@@ -22,11 +23,11 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait-primary',
-        start_url: '/',
-        scope: '/',
+        start_url: '/mundial-2026/',
+        scope: '/mundial-2026/',
         icons: [
-          { src: '/icons/icon-192.svg', sizes: '192x192', type: 'image/svg+xml' },
-          { src: '/icons/icon-512.svg', sizes: '512x512', type: 'image/svg+xml' }
+          { src: '/mundial-2026/icons/icon-192.svg', sizes: '192x192', type: 'image/svg+xml' },
+          { src: '/mundial-2026/icons/icon-512.svg', sizes: '512x512', type: 'image/svg+xml' }
         ]
       },
       workbox: {
