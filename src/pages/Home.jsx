@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useWorldCup } from '../context/WorldCupContext'
 import { calcGlobalStandings } from '../utils/standings'
@@ -377,6 +378,7 @@ function GlobalStandings() {
 
 export default function Home() {
   const { timezone, setTimezone } = useWorldCup()
+  const [showGlobal, setShowGlobal] = useState(false)
 
   return (
     <div className="relative min-h-[calc(100vh-3rem)] overflow-hidden" style={{ zIndex: 1 }}>
@@ -451,7 +453,37 @@ export default function Home() {
 
         {/* Global standings section */}
         <div className="px-3 pb-6">
-          <GlobalStandings />
+          <button
+            onClick={() => setShowGlobal(s => !s)}
+            className="w-full py-2.5 rounded-xl text-sm font-bold tracking-widest uppercase transition-all duration-150 active:scale-[0.97] flex items-center justify-center gap-2"
+            style={{
+              background: showGlobal
+                ? 'linear-gradient(180deg, rgba(180,50,50,0.5) 0%, rgba(120,30,30,0.3) 100%)'
+                : 'linear-gradient(180deg, rgba(247,217,23,0.2) 0%, rgba(247,217,23,0.08) 100%)',
+              border: showGlobal
+                ? '1.5px solid rgba(200,60,60,0.5)'
+                : '1.5px solid rgba(247,217,23,0.4)',
+              boxShadow: showGlobal
+                ? '0 0 16px rgba(200,60,60,0.15), inset 0 0 20px rgba(200,60,60,0.05)'
+                : '0 0 16px rgba(247,217,23,0.1), inset 0 0 20px rgba(247,217,23,0.03)',
+              backdropFilter: 'blur(4px)',
+              WebkitBackdropFilter: 'blur(4px)',
+              color: showGlobal ? '#f87171' : '#f7d917',
+              textShadow: '0 1px 4px rgba(0,0,0,0.6)',
+            }}
+          >
+            <span className="text-sm">{showGlobal ? '✕' : '📊'}</span>
+            <span>{showGlobal ? 'Cerrar' : 'Clasificación General'}</span>
+          </button>
+
+          {/* Expandable standings table */}
+          <div
+            className={`transition-all duration-300 ease-in-out overflow-hidden ${
+              showGlobal ? 'max-h-[500px] opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'
+            }`}
+          >
+            <GlobalStandings />
+          </div>
         </div>
       </div>
     </div>
