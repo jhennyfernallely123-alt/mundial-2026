@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useWorldCup } from '../context/WorldCupContext'
+import { calcGlobalStandings } from '../utils/standings'
 
 // ─── Team colors for the 5 players ───
 const PLAYERS = [
@@ -294,6 +295,86 @@ function RightPanel() {
   )
 }
 
+function GlobalStandings() {
+  const { scores } = useWorldCup()
+  const standings = calcGlobalStandings(scores)
+
+  return (
+    <div
+      className="rounded-xl overflow-hidden"
+      style={{
+        background: 'rgba(10, 15, 10, 0.7)',
+        border: '1px solid rgba(247, 217, 23, 0.3)',
+        boxShadow: '0 0 20px rgba(247, 217, 23, 0.08)',
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)',
+      }}
+    >
+      {/* Header */}
+      <div
+        className="px-3 py-2 text-xs font-bold tracking-widest uppercase text-center"
+        style={{
+          background: 'linear-gradient(180deg, rgba(247,217,23,0.15) 0%, rgba(247,217,23,0.05) 100%)',
+          borderBottom: '1px solid rgba(247, 217, 23, 0.2)',
+          color: '#f7d917',
+          textShadow: '0 1px 4px rgba(0,0,0,0.5)',
+        }}
+      >
+        Clasificación General
+      </div>
+
+      {/* Table */}
+      <div className="overflow-y-auto max-h-80 scrollbar-thin" style={{ scrollbarWidth: 'thin' }}>
+        <table className="w-full text-xs">
+          <thead className="sticky top-0" style={{ background: 'rgba(10, 15, 10, 0.95)' }}>
+            <tr className="text-[10px] uppercase tracking-wider text-gray-400 border-b border-white/10">
+              <th className="py-1.5 px-1 text-left w-5">#</th>
+              <th className="py-1.5 px-1 text-left">Equipo</th>
+              <th className="py-1.5 px-1.5 text-center">PJ</th>
+              <th className="py-1.5 px-1.5 text-center hidden sm:table-cell">PG</th>
+              <th className="py-1.5 px-1.5 text-center hidden sm:table-cell">PE</th>
+              <th className="py-1.5 px-1.5 text-center hidden sm:table-cell">PP</th>
+              <th className="py-1.5 px-1.5 text-center">GF</th>
+              <th className="py-1.5 px-1.5 text-center">GC</th>
+              <th className="py-1.5 px-1.5 text-center">DG</th>
+              <th className="py-1.5 px-1.5 text-center font-bold" style={{ color: '#f7d917' }}>Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            {standings.map((s, i) => (
+              <tr
+                key={s.nombre}
+                className="border-b border-white/5 transition-colors hover:bg-white/5"
+              >
+                <td className="py-1 px-1 font-bold text-gray-500">{i + 1}º</td>
+                <td className="py-1 px-1">
+                  <span className="font-semibold text-gray-200 uppercase tracking-wide">{s.nombre}</span>
+                </td>
+                <td className="py-1 px-1.5 text-center text-gray-300">{s.PJ}</td>
+                <td className="py-1 px-1.5 text-center hidden sm:table-cell" style={{ color: '#4ade80' }}>{s.PG}</td>
+                <td className="py-1 px-1.5 text-center hidden sm:table-cell" style={{ color: '#facc15' }}>{s.PE}</td>
+                <td className="py-1 px-1.5 text-center hidden sm:table-cell" style={{ color: '#f87171' }}>{s.PP}</td>
+                <td className="py-1 px-1.5 text-center text-gray-300">{s.GF}</td>
+                <td className="py-1 px-1.5 text-center text-gray-300">{s.GC}</td>
+                <td
+                  className={`py-1 px-1.5 text-center font-medium ${
+                    s.DG > 0 ? 'text-green-400' : s.DG < 0 ? 'text-red-400' : 'text-gray-400'
+                  }`}
+                >
+                  {s.DG > 0 ? '+' : ''}{s.DG}
+                </td>
+                <td className="py-1 px-1.5 text-center font-bold text-base" style={{ color: '#f7d917' }}>
+                  {s.Pts}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const { timezone, setTimezone } = useWorldCup()
 
@@ -366,6 +447,11 @@ export default function Home() {
               <RightPanel />
             </div>
           </div>
+        </div>
+
+        {/* Global standings section */}
+        <div className="px-3 pb-6">
+          <GlobalStandings />
         </div>
       </div>
     </div>
