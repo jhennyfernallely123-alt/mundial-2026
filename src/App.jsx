@@ -6,6 +6,7 @@ import Groups from './pages/Groups'
 import GroupDetail from './pages/GroupDetail'
 import Calendar from './pages/Calendar'
 import Knockout from './pages/Knockout'
+import Standings from './pages/Standings'
 import Teams from './pages/Teams'
 import TeamDetail from './pages/TeamDetail'
 
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/grupos" element={<Groups />} />
           <Route path="/grupos/:letra" element={<GroupDetail />} />
           <Route path="/calendario" element={<Calendar />} />
+          <Route path="/clasificacion" element={<Standings />} />
           <Route path="/eliminatorias" element={<Knockout />} />
           <Route path="/equipos" element={<Teams />} />
           <Route path="/equipos/:nombre" element={<TeamDetail />} />

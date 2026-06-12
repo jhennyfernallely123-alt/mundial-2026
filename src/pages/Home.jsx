@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useWorldCup } from '../context/WorldCupContext'
-import { calcGlobalStandings } from '../utils/standings'
 
 // ─── Team colors for the 5 players ───
 const PLAYERS = [
@@ -296,89 +294,8 @@ function RightPanel() {
   )
 }
 
-function GlobalStandings() {
-  const { scores } = useWorldCup()
-  const standings = calcGlobalStandings(scores)
-
-  return (
-    <div
-      className="rounded-xl overflow-hidden"
-      style={{
-        background: 'rgba(10, 15, 10, 0.7)',
-        border: '1px solid rgba(247, 217, 23, 0.3)',
-        boxShadow: '0 0 20px rgba(247, 217, 23, 0.08)',
-        backdropFilter: 'blur(6px)',
-        WebkitBackdropFilter: 'blur(6px)',
-      }}
-    >
-      {/* Header */}
-      <div
-        className="px-3 py-2 text-xs font-bold tracking-widest uppercase text-center"
-        style={{
-          background: 'linear-gradient(180deg, rgba(247,217,23,0.15) 0%, rgba(247,217,23,0.05) 100%)',
-          borderBottom: '1px solid rgba(247, 217, 23, 0.2)',
-          color: '#f7d917',
-          textShadow: '0 1px 4px rgba(0,0,0,0.5)',
-        }}
-      >
-        Clasificación General
-      </div>
-
-      {/* Table */}
-      <div className="overflow-y-auto max-h-80 scrollbar-thin" style={{ scrollbarWidth: 'thin' }}>
-        <table className="w-full text-xs">
-          <thead className="sticky top-0" style={{ background: 'rgba(10, 15, 10, 0.95)' }}>
-            <tr className="text-[10px] uppercase tracking-wider text-gray-400 border-b border-white/10">
-              <th className="py-1.5 px-1 text-left w-5">#</th>
-              <th className="py-1.5 px-1 text-left">Equipo</th>
-              <th className="py-1.5 px-1.5 text-center">PJ</th>
-              <th className="py-1.5 px-1.5 text-center hidden sm:table-cell">PG</th>
-              <th className="py-1.5 px-1.5 text-center hidden sm:table-cell">PE</th>
-              <th className="py-1.5 px-1.5 text-center hidden sm:table-cell">PP</th>
-              <th className="py-1.5 px-1.5 text-center">GF</th>
-              <th className="py-1.5 px-1.5 text-center">GC</th>
-              <th className="py-1.5 px-1.5 text-center">DG</th>
-              <th className="py-1.5 px-1.5 text-center font-bold" style={{ color: '#f7d917' }}>Pts</th>
-            </tr>
-          </thead>
-          <tbody>
-            {standings.map((s, i) => (
-              <tr
-                key={s.nombre}
-                className="border-b border-white/5 transition-colors hover:bg-white/5"
-              >
-                <td className="py-1 px-1 font-bold text-gray-500">{i + 1}º</td>
-                <td className="py-1 px-1">
-                  <span className="font-semibold text-gray-200 uppercase tracking-wide">{s.nombre}</span>
-                </td>
-                <td className="py-1 px-1.5 text-center text-gray-300">{s.PJ}</td>
-                <td className="py-1 px-1.5 text-center hidden sm:table-cell" style={{ color: '#4ade80' }}>{s.PG}</td>
-                <td className="py-1 px-1.5 text-center hidden sm:table-cell" style={{ color: '#facc15' }}>{s.PE}</td>
-                <td className="py-1 px-1.5 text-center hidden sm:table-cell" style={{ color: '#f87171' }}>{s.PP}</td>
-                <td className="py-1 px-1.5 text-center text-gray-300">{s.GF}</td>
-                <td className="py-1 px-1.5 text-center text-gray-300">{s.GC}</td>
-                <td
-                  className={`py-1 px-1.5 text-center font-medium ${
-                    s.DG > 0 ? 'text-green-400' : s.DG < 0 ? 'text-red-400' : 'text-gray-400'
-                  }`}
-                >
-                  {s.DG > 0 ? '+' : ''}{s.DG}
-                </td>
-                <td className="py-1 px-1.5 text-center font-bold text-base" style={{ color: '#f7d917' }}>
-                  {s.Pts}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  )
-}
-
 export default function Home() {
   const { timezone, setTimezone } = useWorldCup()
-  const [showGlobal, setShowGlobal] = useState(false)
 
   return (
     <div className="relative min-h-[calc(100vh-3rem)] overflow-hidden" style={{ zIndex: 1 }}>
@@ -451,39 +368,24 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Global standings section */}
+        {/* Link to global standings page */}
         <div className="px-3 pb-6">
-          <button
-            onClick={() => setShowGlobal(s => !s)}
-            className="w-full py-2.5 rounded-xl text-sm font-bold tracking-widest uppercase transition-all duration-150 active:scale-[0.97] flex items-center justify-center gap-2"
+          <Link
+            to="/clasificacion"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-bold tracking-widest uppercase transition-all duration-150 active:scale-[0.97]"
             style={{
-              background: showGlobal
-                ? 'linear-gradient(180deg, rgba(180,50,50,0.5) 0%, rgba(120,30,30,0.3) 100%)'
-                : 'linear-gradient(180deg, rgba(247,217,23,0.2) 0%, rgba(247,217,23,0.08) 100%)',
-              border: showGlobal
-                ? '1.5px solid rgba(200,60,60,0.5)'
-                : '1.5px solid rgba(247,217,23,0.4)',
-              boxShadow: showGlobal
-                ? '0 0 16px rgba(200,60,60,0.15), inset 0 0 20px rgba(200,60,60,0.05)'
-                : '0 0 16px rgba(247,217,23,0.1), inset 0 0 20px rgba(247,217,23,0.03)',
+              background: 'linear-gradient(180deg, rgba(247,217,23,0.2) 0%, rgba(247,217,23,0.08) 100%)',
+              border: '1.5px solid rgba(247,217,23,0.4)',
+              boxShadow: '0 0 16px rgba(247,217,23,0.1), inset 0 0 20px rgba(247,217,23,0.03)',
               backdropFilter: 'blur(4px)',
               WebkitBackdropFilter: 'blur(4px)',
-              color: showGlobal ? '#f87171' : '#f7d917',
+              color: '#f7d917',
               textShadow: '0 1px 4px rgba(0,0,0,0.6)',
             }}
           >
-            <span className="text-sm">{showGlobal ? '✕' : '📊'}</span>
-            <span>{showGlobal ? 'Cerrar' : 'Clasificación General'}</span>
-          </button>
-
-          {/* Expandable standings table */}
-          <div
-            className={`transition-all duration-300 ease-in-out overflow-hidden ${
-              showGlobal ? 'max-h-[500px] opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'
-            }`}
-          >
-            <GlobalStandings />
-          </div>
+            <span className="text-sm">📊</span>
+            <span>Clasificación General</span>
+          </Link>
         </div>
       </div>
     </div>
