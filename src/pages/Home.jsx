@@ -352,24 +352,8 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Controls section */}
-        <div className="flex-1 px-3 pb-4 mt-4 overflow-y-auto">
-          {/* Desktop/tablet: side by side. Mobile: stacked */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-3">
-            {/* Left Panel - Groups */}
-            <div className="flex-1 min-w-0">
-              <LeftPanel timezone={timezone} setTimezone={setTimezone} />
-            </div>
-
-            {/* Right Panel - Navigation */}
-            <div className="w-full md:w-48 lg:w-56 relative">
-              <RightPanel />
-            </div>
-          </div>
-        </div>
-
         {/* Link to global standings page */}
-        <div className="px-3 pb-6">
+        <div className="px-3 mt-3">
           <Link
             to="/clasificacion"
             className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-bold tracking-widest uppercase transition-all duration-150 active:scale-[0.97]"
@@ -386,6 +370,22 @@ export default function Home() {
             <span className="text-sm">📊</span>
             <span>Clasificación General</span>
           </Link>
+        </div>
+
+        {/* Controls section */}
+        <div className="flex-1 px-3 pb-4 mt-4 overflow-y-auto">
+          {/* Desktop/tablet: side by side. Mobile: stacked */}
+          <div className="flex flex-col md:flex-row gap-4 md:gap-3">
+            {/* Left Panel - Groups */}
+            <div className="flex-1 min-w-0">
+              <LeftPanel timezone={timezone} setTimezone={setTimezone} />
+            </div>
+
+            {/* Right Panel - Navigation */}
+            <div className="w-full md:w-48 lg:w-56 relative">
+              <RightPanel />
+            </div>
+          </div>
         </div>
       </div>
     </div>
