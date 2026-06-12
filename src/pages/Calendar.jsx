@@ -2,6 +2,8 @@ import { useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { matches } from '../utils/data'
 import MatchCard from '../components/MatchCard'
+import { useWorldCup } from '../context/WorldCupContext'
+import { formatMatchTime } from '../utils/timezone'
 
 const stageLabels = {
   'Dieciseisavos': 'Dieciseisavos',
@@ -24,6 +26,7 @@ function getTodayFecha() {
 }
 
 export default function Calendar() {
+  const { userOffset } = useWorldCup()
   const [searchParams, setSearchParams] = useSearchParams()
   const initialFilter = searchParams.get('hoy') === '1' ? 'hoy' : 'todas'
   const [filter, setFilter] = useState(initialFilter)
@@ -34,19 +37,29 @@ export default function Calendar() {
     return stageLabels[m.grupo] || m.grupo
   }))]
 
+  // Pre-compute converted date for each match
+  const matchDates = useMemo(() => {
+    const map = {}
+    matches.forEach(m => {
+      const { fecha } = formatMatchTime(m, userOffset)
+      map[m.id] = fecha
+    })
+    return map
+  }, [userOffset])
+
   const filtered = filter === 'todas'
     ? matches
     : filter === 'hoy'
-    ? matches.filter(m => m.fecha_larga === today)
+    ? matches.filter(m => matchDates[m.id] === today)
     : matches.filter(m => {
         if (filter === 'Fase de grupos') return m.grupo?.startsWith('Grupo')
         return m.grupo === filter || stageLabels[m.grupo] === filter
       })
 
-  // Group by date
+  // Group by converted date
   const byDate = {}
   filtered.forEach(m => {
-    const date = m.fecha_larga || 'Sin fecha'
+    const date = matchDates[m.id] || m.fecha_larga || 'Sin fecha'
     if (!byDate[date]) byDate[date] = []
     byDate[date].push(m)
   })
